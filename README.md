@@ -1,2 +1,2 @@
 # litbird.win
-Job application to join Litnerd
+Job application to join [Litnerd](https://litnerd.com/)
