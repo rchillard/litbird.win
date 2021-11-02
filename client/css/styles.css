@@ -1,3 +1,59 @@
+/* Elements */
+
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
 html {
 	font-family: Poppins, sans-serif;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+
+/* Classes */
+
+.text-orange {
+	color: #ff9800;
+}
+
+ /* label color */
+ .input-field label {
+	color: #ff9800;
+  }
+  /* label focus color */
+  .input-field input[type=text]:focus + label {
+	color: #ff9800;
+  }
+  /* label underline focus color */
+  .input-field input[type=text]:focus {
+	border-bottom: 1px solid #ff9800;
+	box-shadow: 0 1px 0 0 #000;
+  }
+  /* valid color */
+  .input-field input[type=text].valid {
+	border-bottom: 1px solid #ff9800;
+	box-shadow: 0 1px 0 0 #000;
+  }
+  /* invalid color */
+  .input-field input[type=text].invalid {
+	border-bottom: 1px solid #ff9800;
+	box-shadow: 0 1px 0 0 #000;
+  }
+  /* icon prefix focus color */
+  .input-field .prefix.active {
+	color: #ff9800;
+  }
+	   
+
+/* Identifiers */
+
+#logo {
+	margin-right: .5rem;
+	height: 32px;
+	width: 32px;
 }
