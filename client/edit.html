@@ -30,7 +30,7 @@
         </nav>
     </header>
     <main class="container">
-        <h1>Create Book</h1>
+        <h1>Edit Book</h1>
         <form id="create" onsubmit="addBook(event)">
             <div class="row">
                 <div class="input-field col s6">
@@ -103,6 +103,11 @@
         let bookSynopsis = document.querySelector('#book_synopsis')
         let bookCover = document.querySelector('#book_cover')
 
+        // Parameters from URL
+        let params = new URLSearchParams(window.location.search);
+        let bookid = params.get("bookid");
+        console.log(bookid);
+
         // Utility functions
         function serialize(data) {
             let obj = {}
@@ -112,9 +117,31 @@
             return obj
         }
 
-        // Operative function
-        function addBook(event) {
-            console.log("addBook button pressed!")
+        // Operative functions
+        fetch(`https://litbird.win/api/books/${bookid}`).then(function (response) {
+            // The API call was successful!
+            if (response.ok) {
+                return response.json();
+            }
+
+            // There was an error
+            return Promise.reject(response);
+
+        }).then(function (data) {
+            // This is the JSON from our response
+            console.log(data);
+            let { title, author, synopsis } = data;
+            bookTitle.value = title;
+            bookAuthor.value = author;
+            bookSynopsis.value = synopsis;
+
+        }).catch(function (err) {
+            // There was an error
+            console.warn('Something went wrong.', err);
+        });
+
+        function editBook(event) {
+            console.log("editBook button pressed!")
             event.preventDefault()
 
             // Gather data from DOM
@@ -128,7 +155,7 @@
             console.log(formObj)
 
             // Submit to API as JSON
-            fetch('https://litbird.win/api/books', {
+            fetch(`https://litbird.win/api/books/${bookid}`, {
                 method: 'POST',
                 body: JSON.stringify(serialize(formData)), // The data
                 headers: {
