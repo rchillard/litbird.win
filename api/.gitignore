@@ -1,0 +1,7 @@
+node_modules/
+worker/
+.cargo-ok
+package-lock.json
+
+# Pretty sure we need to exempt this from version control, as it contains internal IDs
+wrangler.toml
