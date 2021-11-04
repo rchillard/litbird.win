@@ -31,10 +31,10 @@
     </header>
     <main class="container">
         <h1>Create a New Book</h1>
-        <form action="#">
+        <form id="create" onsubmit="addBook(event)">
             <div class="row">
                 <div class="input-field col s6">
-                    <input placeholder="Placeholder" id="book_title" type="text" class="validate">
+                    <input placeholder="Your Book's Name" id="book_title" type="text" class="validate">
                     <label for="book_title">Book Title</label>
                 </div>
                 <div class="input-field col s6">
@@ -60,12 +60,11 @@
                 </div>
             </div>
             <div class="row">
-                <a class="waves-effect waves-light btn-large orange">Create
-                    Book<i class="material-icons right">book</i></a>
-
+                <button class="waves-effect waves-light btn-large orange" type="submit" name="action">Create Book<i
+                        class="material-icons right">book</i>
+                </button>
             </div>
         </form>
-
     </main>
     <footer class="page-footer orange accent-4">
         <div class="container">
@@ -96,6 +95,56 @@
             </div>
         </div>
     </footer>
+    <script>
+        // Elements from DOM
+        let form = document.querySelector('#create')
+        let bookTitle = document.querySelector('#book_title')
+        let bookAuthor = document.querySelector('#book_author')
+        let bookSynopsis = document.querySelector('#book_synopsis')
+        let bookCover = document.querySelector('#book_cover')
+
+        // Utility functions
+        function serialize(data) {
+            let obj = {}
+            for (let [key, value] of data) {
+                obj[key] = value
+            }
+            return obj
+        }
+
+        // Operative function
+        function addBook(event) {
+            console.log("addBook button pressed!")
+            event.preventDefault()
+
+            // Gather data from DOM
+            let formData = new FormData(form)
+            formData.append('title', bookTitle.value)
+            formData.append('author', bookAuthor.value)
+            formData.append('synopsis', bookSynopsis.value)
+
+            // Serialize for submission
+            let formObj = serialize(formData)
+
+            // Submit to API as JSON
+            fetch('https://litbird.win/api/books', {
+                method: 'POST',
+                body: JSON.stringify(serialize(formData)), // The data
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8' // The type of data you're sending
+                }
+            }).then(function (response) {
+                if (response.ok) {
+                    return response.json()
+                }
+                throw response;
+            }).then(function (data) {
+                console.log(data)
+            }).catch(function (error) {
+                console.warn(error)
+            })
+        }
+    </script>
 </body>
 
 </html>
