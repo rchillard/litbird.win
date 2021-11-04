@@ -1,8 +1,10 @@
 # API
 
-This template demonstrates using the  package to add routing to your Cloudflare Workers.
+This is a basic API that returns JSON. It leverages two small packages right now:
+- [`itty-router`](https://github.com/kwhitley/itty-router) to achieve an Express like syntax
+- [`nanoid`](https://github.com/ai/nanoid) to generate UUIDs for book keys
 
-[`index.js`](https://github.com/cloudflare/worker-template-router/blob/master/index.js) is the content of the Workers script.
+A future upgrade should consider using book titles as the unique key.
 
 ## Routes
 
@@ -30,9 +32,3 @@ You can publish using:
 ```
 wrangler publish
 ```
-
-This API leverages two small packages right now:
-- [`itty-router`](https://github.com/kwhitley/itty-router) to achieve an Express like syntax
-- [`nanoid`](https://github.com/ai/nanoid) to generate UUIDs for book keys
-
-A future upgrade should consider using book titles as the unique key.
