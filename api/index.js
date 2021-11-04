@@ -14,7 +14,7 @@ const router = ThrowableRouter({ base: '/api' })
 
 router.get('/test', async request => {
   console.log(`Received new request: ${request.url}`)
-  return new Response("Test GET", { status: 200 });
+  return text('Test GET');
 })
 
 // GET collection of books
@@ -40,8 +40,8 @@ router.post('/books', withContent, async request => {
 
   // Future upgrade: Need to base64 encode the title and use as Key in KV, so we can easily test for duplicate titles
   if ('title' in body) {
-    let bookid = nanoid();
-    let { title, author, synopsis } = body;
+    let bookid = nanoid()
+    let { title, author, synopsis } = body
     let bookObject = {
       title: title,
       author: author,
@@ -50,9 +50,10 @@ router.post('/books', withContent, async request => {
 
     await TITLES.put(bookid, JSON.stringify(bookObject))
 
-    return new Response(`Book created: ${JSON.stringify(bookObject)}`, { status: 200 })
+    return status(201, 'Book created!')
   } else {
-    return new Response("Missing title", { status: 400 })
+    // return json("Missing title", 404)
+    return missing('Missing title.')
   }
 })
 
@@ -71,12 +72,12 @@ router.put('/books/:id', withContent, withParams, async request => {
     let book = await TITLES.get(request.id)
     if (book) {
       await TITLES.put(request.id, JSON.stringify(bookObject))
-      return new Response(`Book modified: ${JSON.stringify(bookObject)}`, { status: 200 })
+      return status(201, 'Book modified!')
     } else {
-      return new Response("No book found with that id", { status: 400 })
+      return missing('No book found with that id.')
     }
   } else {
-    return new Response("Missing title", { status: 400 })
+    return missing('Missing title.')
   }
 })
 
@@ -85,10 +86,10 @@ router.delete('/books/:id', withParams, async request => {
   let book = await TITLES.get(request.id)
   if (book) {
     let bookObject = await TITLES.delete(request.id)
-    return new Response(`Book deleted: ${request.id}`, { status: 200 })
+    return status('Book deleted.')
 
   } else {
-    return new Response("No book found with that id", { status: 400 })
+    return missing('No book found with that id.')
   }
 })
 
