@@ -92,6 +92,7 @@
         </div>
     </footer>
     <script>
+        // Retrieve books on page load
         fetch('https://litbird.win/api/books').then(function (response) {
 
             // The API call was successful!
@@ -105,12 +106,49 @@
         }).then(function (data) {
             // This is the JSON from our response
             console.log(data);
+
+            let books = []
+
+            for(let bookid in data) {
+                books.push(retrieveBook(bookid.name));
+            }
+
+            let renderedBooks = await Promise.all(books);
+
+            console.log("Books retrieved: ")
+            for(let book of books) {
+                console.log(book);
+            }
+
         }).catch(function (err) {
             // There was an error
             console.warn('Something went wrong.', err);
         });
 
-        // generate card
+        // Helper functions
+        // Retrieve individual book
+        async function retrieveBook(id) {
+            let book = fetch(`https://litbird.win/api/books/${id}`).then(function (response) {
+
+                // The API call was successful!
+                if (response.ok) {
+                    return response.json();
+                }
+
+                // There was an error
+                return Promise.reject(response);
+
+            }).then(function (data) {
+                // This is the JSON from our response
+                console.log(data);
+                return data;
+            }).catch(function (err) {
+                // There was an error
+                console.warn('Something went wrong.', err);
+            });
+        }
+
+        // generate HTML for card
         function generateCard(title, synopsis, bookid) {
             return `<div class="col s12 m4">
                 <div class="card">
