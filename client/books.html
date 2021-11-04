@@ -31,8 +31,8 @@
     </header>
     <main class="container">
         <h1>Your Books</h1>
-        <div class="row">
-            <div class="col s12 m4">
+        <div class="row" id="#card-container">
+            <!-- <div class="col s12 m4">
                 <div class="card">
                     <div class="card-image">
                         <img src="img/owls-together-786x549.jpg">
@@ -58,7 +58,7 @@
                             surprises.</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
     </main>
@@ -92,6 +92,11 @@
         </div>
     </footer>
     <script>
+
+        // Get DOM Elements
+        let cards = document.getElementById('#card-container')
+        console.log(cards)
+
         // Retrieve books on page load
         fetch('https://litbird.win/api/books').then(function (response) {
 
@@ -105,50 +110,35 @@
 
         }).then(function (data) {
             // This is the JSON from our response
-            console.log(data)
-
             let books = []
+            let bookids = []
 
-            for (let bookid in data) {
-                books.push(retrieveBook(bookid.name))
+            for (var i = 0; i < data.length; i += 1) {
+                console.log(data[i].name);
+                bookids.push(data[i].name); // this is super hacky and needs to be refactored
+                books.push(fetch(`https://litbird.win/api/books/${data[i].name}`))
             }
 
             Promise.all(books).then(function (responses) {
                 console.log("Books retrieved: ")
                 console.log(responses)
-
-                for (let response of responses) {
-                    console.log(response)
+                return Promise.all(responses.map(function (response) {
+                    return response.json();
+                }));
+            }).then(function (data) {
+                console.log(data)
+                for (var i = 0; i < data.length; i += 1) {
+                    cards.insertAdjacentHTML('beforeend', generateCard(data[i].title, data[i].synopsis, bookids[i]))
                 }
+            }).catch(function (error) {
+                console.log(error)
             })
-
         }).catch(function (err) {
             // There was an error
             console.warn('Something went wrong.', err)
         });
 
         // Helper functions
-        // Retrieve individual book
-        function retrieveBook(id) {
-            fetch(`https://litbird.win/api/books/${id}`).then(function (response) {
-
-                // The API call was successful!
-                if (response.ok) {
-                    return response.json()
-                }
-
-                // There was an error
-                return Promise.reject(response);
-
-            }).then(function (data) {
-                // This is the JSON from our response
-                console.log(data)
-                return data
-            }).catch(function (err) {
-                // There was an error
-                console.warn('Something went wrong.', err)
-            });
-        }
 
         // generate HTML for card
         function generateCard(title, synopsis, bookid) {
