@@ -8,25 +8,30 @@
     <title>Litbird</title>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-    <script src="js/vendor/materialize.min.js" defer></script>
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
+    <script src="js/vendor/materialize.js" defer></script>
     <link type="text/css" rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
     <header>
         <nav class="orange accent-4">
-            <div class="container nav-wrapper">
-                <div>
-                    <a href="index.html" class="brand-logo"><img id="logo" src="img/litbird-logo-64x64-gray.png">Litbird</a>
-                </div>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <div class="nav-wrapper container">
+                <a href="index.html" class="brand-logo"><img id="logo" src="img/litbird-logo-64x64-gray.png">Litbird</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
                     <li><a href="books.html">Books<i class="material-icons right">library_books</i></a></li>
                     <li><a href="create.html">Create<i class="material-icons right">library_add</i></a></li>
-                    <li><a href="profile.html">Profile<i class="material-icons right">face</i></a></li>
+                    <li><a href="profile.html">About<i class="material-icons right">face</i></a></li>
                 </ul>
             </div>
         </nav>
+
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="books.html">Books<i class="material-icons right">library_books</i></a></li>
+            <li><a href="create.html">Create<i class="material-icons right">library_add</i></a></li>
+            <li><a href="profile.html">About<i class="material-icons right">face</i></a></li>
+        </ul>
     </header>
     <main class="container">
         <h1>Litbird</h1>
@@ -62,7 +67,8 @@
                 <div class="col l6 s12">
                     <h5 class="white-text">Litbird</h5>
                     <p class="grey-text text-lighten-4">Litbird is a proof of concept serving as a job application to
-                        join <a class="grey-text text-lighten-2" href="https://litnerd.com/">Litnerd</a>. It demonstrates how quickly
+                        join <a class="grey-text text-lighten-2" href="https://litnerd.com/">Litnerd</a>. It
+                        demonstrates how quickly
                         a working prototype can be built, when you
                         select core web technologies and leverage serverless infrastructure.</p>
                 </div>
@@ -71,7 +77,7 @@
                     <ul>
                         <li><a class="grey-text text-lighten-3" href="books.html">Books</a></li>
                         <li><a class="grey-text text-lighten-3" href="create.html">Create</a></li>
-                        <li><a class="grey-text text-lighten-3" href="profile.html">Profile</a></li>
+                        <li><a class="grey-text text-lighten-3" href="profile.html">About</a></li>
                         <li><a class="grey-text text-lighten-3" href="index.html">Home</a></li>
                     </ul>
                 </div>
@@ -84,5 +90,16 @@
             </div>
         </div>
     </footer>
+    <script>
+        // SideNav support in mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.sidenav');
+            var options = {
+                edge: 'right'
+            }
+            var instances = M.Sidenav.init(elems, options);
+        });
+    </script>
 </body>
+
 </html>
