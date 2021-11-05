@@ -106,10 +106,7 @@
 
         // Handle image upload event
         bookCover.addEventListener('change', async (event) => {
-            console.log(event);
-            // Handle image by converting to base64
             let file = bookCover.files[0];
-            console.log(file);
             getBase64(file).then(function (data) {
                 fileBase64 = data;
             });
@@ -135,7 +132,6 @@
 
         // Operative function
         function addBook(event) {
-            console.log("addBook button pressed!")
             event.preventDefault()
 
             // Gather data from DOM
@@ -147,7 +143,6 @@
 
             // Serialize for submission
             let formObj = serialize(formData)
-            console.log(formObj)
 
             // Submit to API as JSON
             fetch('https://litbird.win/api/books', {
@@ -163,13 +158,12 @@
                 throw response;
             }).then(function (data) {
                 console.log(data)
+                M.toast({html: 'Book created!'})
+                form.reset();
             }).catch(function (error) {
                 console.warn(error)
             })
         }
-
-
-
     </script>
 </body>
 
