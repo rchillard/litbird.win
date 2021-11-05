@@ -180,7 +180,7 @@
 
             // Submit to API as JSON
             fetch(`https://litbird.win/api/books/${bookid}`, {
-                method: 'POST',
+                method: 'PUT',
                 body: JSON.stringify(serialize(formData)), // The data
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8' // The type of data you're sending
