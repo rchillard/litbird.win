@@ -63,11 +63,12 @@ router.put('/books/:id', withContent, withParams, async request => {
   let body = request.content
 
   if ('title' in body) {
-    let { title, author, synopsis } = body;
+    let { title, author, synopsis, cover } = body;
     let bookObject = {
       title: title,
       author: author,
-      synopsis: synopsis
+      synopsis: synopsis,
+      cover: cover
     }
 
     let book = await TITLES.get(request.id)
