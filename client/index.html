@@ -36,30 +36,31 @@
     <main class="container">
         <h1>Litbird</h1>
         <!-- <img class="circle responsive-img" src="img/owls-resized.jpg"> -->
-        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
-            atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique
-            sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum
-            facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-            impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-            repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et
-            voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus,
-            ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
-            atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique
-            sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum
-            facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-            impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-            repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et
-            voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus,
-            ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
-            atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique
-            sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum
-            facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-            impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-            repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et
-            voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus,
-            ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+        <p>Litbird is a proof of concept written as an introduction to me, Ryan Hillard, for the awesome team at
+            Litnerd. I wanted to apply to join your company with something more than just a resume, so I spent ~8 hours
+            total over the last week putting together this little sample app. It allows you to create books, modify
+            books, and upload images as covers. The proof of concept does not support the concept of identity, so the
+            books are all part of a shared library.</p>
+
+        <h2>Technology</h2>
+        <p>Litbird is a proof of concept using core web technologies for the client (HTML, CSS, JS) and a thin
+            serverless API built on top of Cloudflare Workers for the server. The -ilities being optimized for
+            are simplicity and upgradability. An added benefit of using small technology is speed and reduced
+            time to iterate, because there are fewer setup steps, resulting in shorter time to version one.</p>
+        <p>
+            The client is written in plain old HTML and leverages the Materialize CSS framework. I had never worked with
+            Materialize and I wanted to take this opportunity to try it out. Since there's no build step (no frontend
+            framework), it's easy to get started and deliver a first working version. This proof of concept is right at
+            the point where I would re-factor it to leverage functions across pages, but it's not so big yet that I'd
+            use a frontend framework.
+        </p>
+        <p>
+            The server is written in vanilla JavaScript using only two dependencies: itty-router and nanoid. The total
+            dependent code is less than 10kb. Using JavaScript means a web developer can understand the backend code,
+            and leveraging a serverless provider like Cloudflare means no one has to pay for servers sitting idle. We
+            only use the compute we need. This is great for saving on costs and also saving the earth.</p>
+
+        <p>You can see the code <a href="https://github.com/rchillard/litbird.win">here on GitHub</a>.</p>
     </main>
     <footer class="page-footer orange accent-4">
         <div class="container">

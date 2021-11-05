@@ -1,2 +1,2 @@
 # litbird.win
-Job application to join [Litnerd](https://litnerd.com/)
+Proof of concept for the team at [Litnerd](https://litnerd.com/)
