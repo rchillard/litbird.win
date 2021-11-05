@@ -102,6 +102,18 @@
         let bookAuthor = document.querySelector('#book_author')
         let bookSynopsis = document.querySelector('#book_synopsis')
         let bookCover = document.querySelector('#book_cover')
+        let fileBase64;
+
+        // Handle image upload event
+        bookCover.addEventListener('change', async (event) => {
+            console.log(event);
+            // Handle image by converting to base64
+            let file = bookCover.files[0];
+            console.log(file);
+            getBase64(file).then(function (data) {
+                fileBase64 = data;
+            });
+        })
 
         // Utility functions
         function serialize(data) {
@@ -131,14 +143,6 @@
             formData.append('title', bookTitle.value)
             formData.append('author', bookAuthor.value)
             formData.append('synopsis', bookSynopsis.value)
-
-            // Handle image by converting to base64
-            let file = bookCover.files[0];
-            console.log(file);
-            let fileBase64 = getBase64(file).then(function (data) {
-                return data;
-            });
-
             formData.append('cover', fileBase64)
 
             // Serialize for submission

@@ -41,11 +41,12 @@ router.post('/books', withContent, async request => {
   // Future upgrade: Need to base64 encode the title and use as Key in KV, so we can easily test for duplicate titles
   if ('title' in body) {
     let bookid = nanoid()
-    let { title, author, synopsis } = body
+    let { title, author, synopsis, cover } = body
     let bookObject = {
       title: title,
       author: author,
-      synopsis: synopsis
+      synopsis: synopsis,
+      cover: cover
     }
 
     await TITLES.put(bookid, JSON.stringify(bookObject))
