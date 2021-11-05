@@ -44,7 +44,8 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea id="book_synopsis" class="materialize-textarea" data-length="120" placeholder="A Short Synopsis"></textarea>
+                    <textarea id="book_synopsis" class="materialize-textarea" data-length="120"
+                        placeholder="A Short Synopsis"></textarea>
                     <label for="book_synopsis">Synopsis</label>
                 </div>
             </div>
@@ -102,6 +103,15 @@
         let bookAuthor = document.querySelector('#book_author')
         let bookSynopsis = document.querySelector('#book_synopsis')
         let bookCover = document.querySelector('#book_cover')
+        let fileBase64;
+
+        // Handle image upload event
+        bookCover.addEventListener('change', async (event) => {
+            let file = bookCover.files[0];
+            getBase64(file).then(function (data) {
+                fileBase64 = data;
+            });
+        })
 
         // Parameters from URL
         let params = new URLSearchParams(window.location.search);
@@ -115,6 +125,15 @@
                 obj[key] = value
             }
             return obj
+        }
+
+        function getBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
         }
 
         // Operative functions
@@ -149,6 +168,7 @@
             formData.append('title', bookTitle.value)
             formData.append('author', bookAuthor.value)
             formData.append('synopsis', bookSynopsis.value)
+            formData.append('cover', fileBase64)
 
             // Serialize for submission
             let formObj = serialize(formData)
@@ -168,6 +188,8 @@
                 throw response;
             }).then(function (data) {
                 console.log(data)
+                M.toast({ html: 'Book updated!' })
+                window.location.href = 'https://litbird.win/books';
             }).catch(function (error) {
                 console.warn(error)
             })
