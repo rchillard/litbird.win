@@ -6,26 +6,31 @@ class Modal extends Component {
     constructor(props) {
         super(props)
         this.registerAnswer = this.registerAnswer.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     registerAnswer(e) {
         e.preventDefault() // Capture first onClick from Input (prevent double event from Label+Input)
-        console.log(e.target)
+        this.props.recordAnswer(e.target.textContent) // Call function on parent Quiz component and record State
+    }
+
+    closeModal(e) {
+        this.props.hideModal(e);
     }
 
     render() {
         const { question, answers } = this.props;
         return (
-            <div className="Modal">
-                <div className="Content">
+            <div className="Modal" onClick={this.closeModal}>
+                <div className="Content" >
                     <div className="Question">
                         <h4>{question}</h4>
                     </div>
                     <div className="Answers">
                         <form>
                             {answers.map(a => {
-                            return (<label className="Answer" name={a} key={uuidv4()} onClick={this.registerAnswer}>{a}
-                                    <input type="radio" name={a} value={a} />
+                            return (<label className="Answer" htmlFor={a} key={uuidv4()} onClick={this.registerAnswer}>{a}
+                                    <input type="radio" id={a} name={a} value={a} />
                                 </label>)
                             })}
                         </form>
