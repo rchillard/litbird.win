@@ -18,11 +18,11 @@ class Course extends Component {
                 <div>
                     <h2>Course: {courseName}</h2>
                     <Lesson id={1} />
-                    <Quiz id={1} />
+                    <Quiz id={1} question="What is your favorite color?" answers={["Red","Orange","Yellow","Green","Blue","Indigo","Violet"]}/>
                     <Lesson id={2} />
-                    <Quiz id={2} />
+                    <Quiz id={2} question="Who plays the role of Tony Stark in the MCU?" answers={["Robert Downey Jr.","Chris Evans","Mark Ruffalo","Samuel L. Jackson"]}/>
                     <Lesson id={3} />
-                    <Quiz id={3} />
+                    <Quiz id={3} question="How many of you collect lightsabers?" answers={["I do", "I don't"]}/>
                 </div>
                 <Progress />
             </div>
