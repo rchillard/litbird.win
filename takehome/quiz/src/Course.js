@@ -1,21 +1,30 @@
-import React, { component } from 'react'
+import React, { Component } from 'react'
 import './Course.css'
 
 // Components
-import Quiz from './Quiz'
 import Lesson from './Lesson'
+import Progress from './Progress'
+import Quiz from './Quiz'
 
-class Course extends React.Component {
+class Course extends Component {
+    constructor(props) {
+        super(props)
+    }
+
     render() {
+        const { courseName } = this.props;
         return (
             <div className="Course">
-                <h2>I am a course!</h2>
-                <Lesson />
-                <Quiz />
-                <Lesson />
-                <Quiz />
-                <Lesson />
-                <Quiz />
+                <div>
+                    <h2>Course: {courseName}</h2>
+                    <Lesson id={1} />
+                    <Quiz id={1} />
+                    <Lesson id={2} />
+                    <Quiz id={2} />
+                    <Lesson id={3} />
+                    <Quiz id={3} />
+                </div>
+                <Progress />
             </div>
         )
     }
