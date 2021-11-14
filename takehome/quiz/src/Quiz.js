@@ -32,10 +32,9 @@ class Quiz extends Component {
     }
 
     recordAnswer(answer) {
-        this.setState({ answerSubmitted: answer })
-        this.hideModal()
-        this.setState({ complete: true })
+        this.setState({ answerSubmitted: answer, complete: true })
         this.saveAnswer(answer)
+        this.hideModal()
     }
 
     saveAnswer(answer) {
@@ -47,7 +46,7 @@ class Quiz extends Component {
             return true;
         } else {
             console.log('Offline: saving quiz result to sessionStorage')
-            // Store in localStorage and wait until we have connection again
+            // Store in sessionStorage and wait until we have connection again
             sessionStorage.setItem(this.props.id, JSON.stringify(answer));
             return false;
         }
@@ -55,11 +54,12 @@ class Quiz extends Component {
 
     render() {
         const { id, question, answers } = this.props;
+
         return (
             <div className="Quiz">
                 <h3>Quiz # {id}</h3>
                 {this.state.complete ? <p>Completed</p> : <button onClick={this.showModal}>Take Quiz</button>}
-                {this.state.visible ? <Modal question={question} answers={answers} hideModal={this.hideModal} recordAnswer={this.recordAnswer} /> : <div></div>}
+                {this.state.visible ? <Modal question={question} answers={answers} hideModal={this.hideModal} recordAnswer={this.recordAnswer} /> : null }
             </div>
         )
     }

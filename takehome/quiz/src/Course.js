@@ -10,10 +10,6 @@ import Progress from './Progress'
 import Quiz from './Quiz'
 
 class Course extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         const { courseName } = this.props;
         return (

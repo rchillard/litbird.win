@@ -7,7 +7,8 @@ export class CourseProvider extends Component {
         super(props)
         this.state = { progress: 10 }
         this.updateProgress = this.updateProgress.bind(this)
-
+        
+        // https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine
         window.addEventListener('online', function (e) {
             console.log('We are online again!')
             Object.keys(sessionStorage).forEach(function (key) {

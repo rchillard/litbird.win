@@ -21,29 +21,74 @@
 	justify-content: center;
 	margin: auto;
 	padding-bottom: 1rem;
-	width: 40%;
+	width: 30vw;
 }
 
 .Question {
-	background-color: #fb651e;
+	background: rgb(131, 58, 180);
+	background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
 	border-top-left-radius: 25px;
 	border-top-right-radius: 25px;
 	color: white;
 	font-weight: bolder;
-	padding-bottom: .25rem;
+	padding: .25rem;
 	text-align: center;
 	width: 100%;
 }
 
-.Answer {
+.Answers {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 80%;
+}
+
+.AnswerMultiple {
 	border: 1px solid #fb651e;
 	border-radius: 50px;
 	display: block;
 	margin: 10px;
 	padding: 1rem 4rem 1rem 4rem;
+	width: 100%;
 }
 
-.Answer > input[type="radio"] {
+.AnswerMultiple > input[type="radio"] {
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: #fff;
+	margin: 0;
+}
+
+.AnswerBinary {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto;
+	justify-items: start;
+	margin: 2rem;
+	width: 100%;
+}
+
+.AnswerBinaryLeft {
+	border: 1px solid #833ab4;
+	border-top-left-radius: 50px;
+	border-bottom-left-radius: 50px;
+	color: #833ab4;
+	display: block;
+	padding: 1rem;
+	width: 100%;
+}
+
+.AnswerBinaryRight {
+	border: 1px solid #fd1d1d;
+	border-top-right-radius: 50px;
+	border-bottom-right-radius: 50px;
+	color: #fd1d1d;
+	display: block;
+	padding: 1rem;
+	width: 100%;
+}
+
+.AnswerBinary input[type="radio"] {
 	-webkit-appearance: none;
 	appearance: none;
 	background-color: #fff;
