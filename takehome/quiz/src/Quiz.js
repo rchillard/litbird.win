@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
 import './Quiz.css'
+
+// Contexts
+import {CourseContext} from './CourseContext'
+
+// Components
 import Modal from './Modal'
 
 class Quiz extends Component {
+    static contextType = CourseContext;
+
     constructor(props) {
         super(props)
         this.state = {
@@ -29,6 +36,7 @@ class Quiz extends Component {
         this.setState({ answerSubmitted: answer })
         this.hideModal()
         this.setState( { complete: true })
+        this.context.updateProgress(25)
     }
 
     render() {

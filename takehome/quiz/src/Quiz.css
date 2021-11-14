@@ -1,12 +1,17 @@
 .Quiz {
 	background-color: lavenderblush;
+	border-radius: 10px;
 	margin: 0 auto;
 	max-width: 100%;
 	padding: 1rem;
 }
 
 button {
-    border: 1px solid black;
-    background: lightgrey;
-    padding: 5px 15px 5px 15px;
+    background-color: #fb651e;
+	border-radius: 4px;
+	border: none;
+	color: white;
+	font-size: 1rem;
+	margin: 5px 0;
+    padding: 8px 24px;
 }
