@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import './ProgressRing.css'
 
 // https://css-tricks.com/building-progress-ring-quickly/
-class ProgressRing extends React.Component {
+class ProgressRing extends Component {
     static defaultProps = {
         radius: "36",
         stroke: "white",

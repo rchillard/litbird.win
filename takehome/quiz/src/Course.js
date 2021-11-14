@@ -16,7 +16,6 @@ class Course extends Component {
 
     render() {
         const { courseName } = this.props;
-
         return (
             <CourseProvider>
                 <div className="Course">
