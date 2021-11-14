@@ -25,7 +25,7 @@
 }
 
 .Question {
-	background-color: black;
+	background-color: #fb651e;
 	border-top-left-radius: 25px;
 	border-top-right-radius: 25px;
 	color: white;
@@ -36,7 +36,7 @@
 }
 
 .Answer {
-	border: 1px solid black;
+	border: 1px solid #fb651e;
 	border-radius: 50px;
 	display: block;
 	margin: 10px;

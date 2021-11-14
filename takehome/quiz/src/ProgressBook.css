@@ -1,5 +1,5 @@
 .ProgressBook {
-    align-content: space-around;
+    align-content: space-between;
     background-color: rgb(245, 245, 245);
     border-radius: 10px;
     display: flex;
@@ -20,4 +20,7 @@
 
 .ProgressBook span {
     color: #ff7332;
+    margin-left: auto;
+    padding-top: 1rem;
+    padding-right: 1rem;
 }

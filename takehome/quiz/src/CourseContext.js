@@ -5,7 +5,7 @@ export const CourseContext = createContext()
 export class CourseProvider extends Component {
     constructor(props) {
         super(props)
-        this.state = { progress: 10 }
+        this.state = {progress: 10}
         this.updateProgress = this.updateProgress.bind(this)
     }
 
