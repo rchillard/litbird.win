@@ -28,7 +28,7 @@ class Course extends Component {
                         <Lesson id={3} />
                         <Quiz id={3} question="How many of you collect lightsabers?" answers={["I do", "I don't"]} />
                     </div>
-                    <Progress />
+                    <Progress studentName="Azeez R" studentGrade="3"/>
                 </div>
             </CourseProvider>
         )
