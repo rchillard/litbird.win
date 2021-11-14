@@ -5,9 +5,6 @@ import './ProgressBook.css'
 import ProgressBar from './ProgressBar'
 
 class ProgressBook extends Component {
-    constructor(props) {
-        super(props)
-    }
 
     render() {
         const { booktitle, bookimg, bookprogress } = this.props

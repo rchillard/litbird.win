@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import './ProgressBar.css'
 
 class ProgressBar extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         let {booktitle, bookprogress} = this.props
         return (

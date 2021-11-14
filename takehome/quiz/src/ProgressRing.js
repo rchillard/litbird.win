@@ -34,7 +34,6 @@ class ProgressRing extends Component {
                         strokeWidth={stroke}
                         strokeDasharray={this.circumference + ' ' + this.circumference}
                         style={{ strokeDashoffset }}
-                        strokeWidth={stroke}
                         r={this.normalizedRadius}
                         cx={radius}
                         cy={radius}

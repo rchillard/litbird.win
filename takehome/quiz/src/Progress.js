@@ -11,10 +11,6 @@ import ProgressBook from './ProgressBook'
 class Progress extends Component {
     static contextType = CourseContext;
 
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         const { studentName, studentGrade } = this.props
         return (
