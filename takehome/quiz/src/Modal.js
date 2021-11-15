@@ -36,9 +36,12 @@ class Modal extends Component {
 
     generateMultipleChoice(answers) {
         console.log("Creating multiple choice list of answers")
+        // need guard clauses to protect against more options than 8
+        const AtoH = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
         return (
-            answers.map(a => {
-                return (<label className="AnswerMultiple" htmlFor={a} key={uuidv4()} onClick={this.registerAnswer}>{a}
+            answers.map((a, index) => {
+                return (<label className="AnswerMultiple" htmlFor={a} key={uuidv4()} onClick={this.registerAnswer}>
+                    <span className="ChoiceLetter">{AtoH[index]}</span> {a}
                     <input type="radio" id={a} name={a} value={a} />
                 </label>)
             })

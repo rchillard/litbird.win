@@ -40,16 +40,21 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 80%;
+	width: 100%;
 }
 
 .AnswerMultiple {
-	border: 1px solid #fb651e;
+	border: 1px solid gray;
 	border-radius: 50px;
 	display: block;
 	margin: 10px;
 	padding: 1rem 4rem 1rem 4rem;
+	text-align: left;
 	width: 100%;
+}
+
+.AnswerMultiple:hover {
+	background-color: rgb(255, 196, 174);
 }
 
 .AnswerMultiple > input[type="radio"] {
@@ -57,6 +62,17 @@
 	appearance: none;
 	background-color: #fff;
 	margin: 0;
+}
+
+.ChoiceLetter {
+	background-color: #fb651e;
+	border: 2px solid #fb651e;
+	border-radius: 50%;
+	color: white;
+	display: inline-block;
+	height: 2rem;
+	text-align: center;
+	width: 2rem;
 }
 
 .AnswerBinary {
@@ -78,6 +94,10 @@
 	width: 100%;
 }
 
+.AnswerBinaryLeft:hover {
+	background-color: lavender;
+}
+
 .AnswerBinaryRight {
 	border: 1px solid #fd1d1d;
 	border-top-right-radius: 50px;
@@ -86,6 +106,10 @@
 	display: block;
 	padding: 1rem;
 	width: 100%;
+}
+
+.AnswerBinaryRight:hover {
+	background-color: rgb(255, 196, 174);
 }
 
 .AnswerBinary input[type="radio"] {
